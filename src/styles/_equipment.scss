@@ -1,0 +1,1015 @@
+.equipment {
+  display: grid;
+  grid-template-areas: "filters filters filters filters" "armor helmet neck gloves" "cape middle middle weapon" "special middle middle shield" "pants middle middle belt" "ring1 ring2 boots otherProperties";
+  box-sizing: border-box;
+  max-width: 32.5em;
+
+  .filters {
+    grid-area: filters;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    justify-content: space-around;
+    img {
+      height: 2em;
+      width: 2em;
+      display: inline;
+      margin-right: 0.5em;
+      align-self: center;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      position: relative;
+      width: 35%;
+      height: 2.3em;
+      input {
+        font-size: 1.2em;
+        box-sizing: border-box;
+        height: 2em;
+        width: 75%;
+        box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+        background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+        border: 1px solid #d6c1a9;
+      }
+      .itemsList {
+        margin: 0;
+        top: 100%;
+        .moreItems {
+          color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-color: black;
+          cursor: default;
+          p {
+            margin: 0;
+            padding-top: 3px;
+            font-size: 2em;
+          }
+        }
+      }
+    }
+    .filter {
+      display: flex;
+      width: 60%;
+      max-width: 60%;
+      min-height: 2.3em;
+      .filtersList {
+        box-sizing: border-box;
+        position: relative;
+        width: 90%;
+        max-width: 90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+        background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+        border: 1px solid #d6c1a9;
+        padding: 2px;
+        .chosenFilters {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          .chosenFilter {
+            font-size: 0.7em;
+            margin: 1px;
+            padding: 1px;
+            border: 1px dashed black;
+            background: lightgray;
+            display: flex;
+            align-items: center;
+            button {
+              height: 1em;
+              width: 1em;
+              padding: 0;
+              margin: 0;
+              margin-left: 2px;
+              border: 1px solid black;
+              border-radius: 0;
+              background-color: inherit;
+              background-image: url("/images/cross-icon.png");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: 70%;
+            }
+            button:hover {
+              background-color: #e3e1e1;
+            }
+            p {
+              margin: 0;
+            }
+          }
+          .manyFilters {
+            padding-left: 3px;
+            padding-right: 3px;
+          }
+        }
+        .chosenFilters:empty:before {
+          content: attr(data-placeholder);
+          color: gray;
+        }
+        .addFilter {
+          height: 1.5em;
+          margin-right: 3px;
+          width: 1.5em;
+          border: 1px solid #bd996f;
+          box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+          border-radius: 0;
+          background-image: url("/images/plus-icon.png");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 80%;
+        }
+        .filtersForm {
+          width: 25em;
+          min-width: 0;
+          margin: 0;
+          top: 100%;
+          color: white;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          .filterLines {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 1em;
+            .filterLine {
+              display: flex;
+              align-items: center;
+              width: 50%;
+              margin-top: 2px;
+              margin-bottom: 2px;
+              label {
+                margin-left: 0.5em;
+              }
+            }
+          }
+          .submit {
+            width: 85%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-top: 1em;
+
+            input,
+            button:not(.closeList) {
+              border-radius: 8px;
+              font-size: 1.3em;
+              color: #d7d50e;
+              box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+              cursor: pointer;
+              background-color: black;
+              border: 2px solid #ec8c42;
+              width: 6em;
+              &:hover {
+                background-color: #322f3e;
+              }
+            }
+            button.resetFilters  {
+              color: #e81327;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .armor,
+  .belt,
+  .boots,
+  .cape,
+  .otherProperties,
+  .gloves,
+  .helmet,
+  .neck,
+  .pants,
+  .ring1,
+  .ring2,
+  .shield,
+  .special,
+  .weapon {
+    position: relative;
+    box-sizing: border-box;
+    width: 8em;
+    height: 8em;
+    border: 2px solid #bd996f;
+    margin: 1px;
+    background-size: auto 6em;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+      border: 2px solid #ae3b48;
+    }
+
+    img {
+      max-width: 6em;
+      max-height: 6em;
+    }
+
+    .unequipButton {
+      border: 0;
+      font-size: 0.75em;
+      border-bottom: 1px solid #bd996f;
+      border-left: 1px solid #bd996f;
+      width: 2em;
+      height: 2em;
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-weight: bold;
+      border-radius: 0;
+      margin: 0;
+      background-image: url("/images/cross-icon.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 70%;
+    }
+
+    .enhanceButton {
+      border: 0;
+      font-size: 0.75em;
+      border-bottom: 1px solid #bd996f;
+      border-right: 1px solid #bd996f;
+      width: 2em;
+      height: 2em;
+      line-height: 0.5em;
+      position: absolute;
+      left: 0;
+      top: 0;
+      border-radius: 0;
+      margin: 0;
+      background-image: url("/images/upgrade.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 80%;
+    }
+
+    .addPsychoLvlButton {
+      border: 0;
+      font-size: 0.75em;
+      border-top: 1px solid #bd996f;
+      border-right: 1px solid #bd996f;
+      width: 2em;
+      height: 2em;
+      line-height: 0.5em;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      border-radius: 0;
+      margin: 0;
+      background-image: url("/images/plus-icon.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 80%;
+    }
+
+    .substractPsychoLvlButton {
+      border: 0;
+      font-size: 0.75em;
+      border-top: 1px solid #bd996f;
+      border-left: 1px solid #bd996f;
+      width: 2em;
+      height: 2em;
+      line-height: 0.5em;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      border-radius: 0;
+      margin: 0;
+      background-image: url("/images/minus-icon.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 70% 110%;
+    }
+
+    .noItemsWarning {
+      position: absolute;
+      margin: auto;
+      color: red;
+      right: 1px;
+      font-size: 1.5em;
+    }
+  }
+
+  .inSlot {
+    background-size: auto;
+  }
+
+  .itemsList {
+    cursor: default;
+    position: absolute;
+    max-width: 80vw;
+    min-width: 27em;
+    background-color: black;
+    margin-top: -2em;
+    left: 0;
+    margin-left: -5em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0.5em;
+    z-index: 2;
+    opacity: 0.9;
+    animation: fadein 1s;
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 0.9;
+      }
+    }
+
+    .equippableItems {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .unequippableItems {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .itemOnList {
+      position: relative;
+      width: 4em;
+      height: 4em;
+      border: 2px solid #0161e7;
+      margin: 2px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .itemImage {
+        width: 90%;
+        height: 90%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+
+    .addItem {
+      background-image: url("/images/plus.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 95%;
+    }
+
+    .addProperty {
+      background-image: url("/images/plus-icon.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 90%;
+    }
+
+    .removeProperty {
+      background-image: url("/images/minus-icon.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 80%;
+    }
+
+    .unequippableItems .itemOnList {
+      cursor: not-allowed;
+    }
+
+    .equippableItems .itemOnList {
+      cursor: pointer;
+    }
+
+    .closeList {
+      position: absolute;
+      right: -0.5em;
+      top: -0.75em;
+      font-weight: bold;
+      border-radius: 0;
+    }
+
+    .title {
+      font-size: 1.25em;
+      align-self: center;
+      color: #d7d50e;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1em;
+      .subtitle {
+        font-size: 0.8em;
+        margin-top: -0.5em;
+      }
+    }
+    .addItemForm {
+      min-width: 27em;
+      margin-left: 1em;
+    }
+    .propertyList {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .property {
+        width: 95%;
+        margin: 2px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        img {
+          width: 1.5em;
+        }
+
+        input {
+          height: 1.5em;
+          font-size: 1em;
+          width: 30%;
+        }
+
+        select {
+          font-size: 1em;
+          width: 45%;
+          background-position: right 0.4em top 50%, 0 0;
+          padding-left: 0.5em;
+        }
+        button {
+          width: 2em;
+          height: 2em;
+          border-radius: 2px;
+          font-size: 0.9em;
+          font-weight: bolder;
+        }
+      }
+
+      .submit {
+        margin-top: 1.5em;
+
+        input,
+        button {
+          border-radius: 8px;
+          font-size: 1.5em;
+          color: #d7d50e;
+          box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+          cursor: pointer;
+          background-color: black;
+          border: 2px solid #ec8c42;
+
+          &:hover {
+            background-color: #322f3e;
+          }
+        }
+      }
+    }
+    .notFound {
+      margin: 0 auto;
+      color: white;
+      font-size: 1.1em;
+    }
+  }
+
+  .itemTooltip {
+    position: absolute;
+    left: 90%;
+    bottom: 90%;
+    font-size: 0.75em;
+    background-color: black;
+    color: white;
+    z-index: 3;
+    width: max-content;
+    border: 1px solid;
+    border-color: inherit;
+    padding: 5px;
+    border-radius: 5px;
+    opacity: 0.9;
+    cursor: default;
+    animation: fadein 1s;
+    line-height: 0.3em;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 0.9;
+      }
+    }
+
+    .itemName {
+      font-size: 1.5em;
+      margin-top: 0.4em;
+      margin-bottom: 0.5em;
+    }
+
+    .damage {
+      color: #d7d50e;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background-image: linear-gradient(
+        to right,
+        rgba(44, 130, 201, 0),
+        rgba(44, 130, 201, 0.75),
+        rgba(44, 130, 201, 0)
+      );
+    }
+    .starItem {
+      color: #ccff33;
+    }
+    p:last-child {
+      margin-bottom: 0em;
+    }
+  }
+
+  .armor {
+    grid-area: armor;
+    background-image: url("/images/armor.svg");
+
+    .itemsList:not(.addItemForm) {
+      margin-top: 4em;
+      margin-left: 3em;
+    }
+  }
+
+  .helmet {
+    grid-area: helmet;
+    background-image: url("/images/helmet.svg");
+
+    .itemsList:not(.addItemForm) {
+      margin-top: 4em;
+      margin-left: 3em;
+    }
+  }
+
+  .neck {
+    grid-area: neck;
+    background-image: url("/images/necklace.svg");
+
+    .itemsList:not(.addItemForm) {
+      margin-top: 4em;
+    }
+  }
+
+  .gloves {
+    grid-area: gloves;
+    background-image: url("/images/gloves.svg");
+
+    .itemsList:not(.addItemForm) {
+      right: 0;
+      margin-top: 4em;
+      margin-right: -5em;
+      left: auto;
+    }
+  }
+
+  .cape {
+    grid-area: cape;
+    background-image: url("/images/cloak.svg");
+
+    .itemsList:not(.addItemForm) {
+      margin-left: 3em;
+    }
+  }
+
+  .weapon {
+    grid-area: weapon;
+    background-image: url("/images/axe-sword.svg");
+
+    .itemsList:not(.addItemForm) {
+      right: 0;
+      margin-right: -5em;
+      left: auto;
+    }
+  }
+
+  .special {
+    grid-area: special;
+    background-image: url("/images/star.svg");
+
+    .itemsList {
+      display: flex;
+      flex-direction: column;
+      color: white;
+      margin-left: 3em;
+
+      .title {
+        font-size: 1.25em;
+        align-self: center;
+        color: #d7d50e;
+      }
+
+      .propertyList {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .property {
+          width: 80%;
+          margin: 2px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+
+          img {
+            margin-right: 0.5em;
+          }
+
+          input,
+          p {
+            height: 1.25em;
+            font-size: 1em;
+            width: 60%;
+          }
+
+          p {
+            margin: -0.3em 0 0;
+          }
+
+          input:not(.textInput) {
+            width: 40%;
+          }
+        }
+
+        .submit {
+          margin-top: 1.5em;
+
+          input {
+            border-radius: 8px;
+            font-size: 1.5em;
+            color: #d7d50e;
+            box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+            background-color: black;
+            border: 2px solid #ec8c42;
+
+            &:hover {
+              background-color: #322f3e;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .shield {
+    grid-area: shield;
+    background-image: url("/images/shield.svg");
+
+    .itemsList:not(.addItemForm) {
+      right: 0;
+      margin-right: -5em;
+      left: auto;
+      min-width: 9em;
+      max-width: 14em;
+    }
+  }
+
+  .pants {
+    grid-area: pants;
+    background-image: url("/images/pants.svg");
+
+    .itemsList:not(.addItemForm) {
+      margin-left: 3em;
+    }
+  }
+
+  .belt {
+    grid-area: belt;
+    background-image: url("/images/belt.svg");
+
+    .itemsList:not(.addItemForm) {
+      right: 0;
+      margin-right: -5em;
+      left: auto;
+    }
+  }
+
+  .ring1 {
+    grid-area: ring1;
+    background-image: url("/images/ring1.svg");
+
+    .itemsList:not(.addItemForm) {
+      margin-left: 3em;
+    }
+  }
+
+  .ring2 {
+    grid-area: ring2;
+    background-image: url("/images/ring2.svg");
+
+    .itemsList:not(.addItemForm) {
+      margin-left: 3em;
+    }
+  }
+
+  .boots {
+    grid-area: boots;
+    background-image: url("/images/boots.svg");
+  }
+
+  .otherProperties {
+    grid-area: otherProperties;
+    background-image: url("/images/other-properties.svg");
+    .itemTooltip {
+      padding: 0.7em 0.4em 0.5em 0.4em;
+      font-size: 1em;
+      .propertiesHeader,
+      .noProperties {
+        font-size: 1.2em;
+        margin: 0.3em;
+      }
+      p {
+        color: #35cbef;
+      }
+    }
+  }
+  .noProperties {
+    font-size: 1.2em;
+    margin: 0.3em;
+  }
+  .middle {
+    grid-area: middle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    .empty {
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-radius: 0;
+      height: 4em;
+      width: 4em;
+      background-image: url("/images/empty.svg");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+    .guild {
+      left: 0;
+      background-image: url("/images/guild.svg");
+      background-color: #bdac6f;
+      border: 2px solid $border-color;
+      cursor: pointer;
+      img {
+        height: 2em;
+        width: 2em;
+        display: inline;
+        margin-right: 0.5em;
+      }
+      .filtersForm {
+        width: 25em;
+        min-width: 0;
+        margin: 0;
+        top: 100%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        // span {
+        //   color: red;
+        // }
+        .templeLevel {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 1em;
+          margin-top: 0.5em;
+          width: 75%;
+          .templeRange {
+            width: 7em;
+            position: relative;
+            input {
+              width: 6em;
+              font-size: 1em;
+            }
+            .templeValue {
+              font-size: 1em;
+              background: white;
+              color: black;
+              padding: 2px 6px;
+              position: absolute;
+              border-radius: 4px;
+              top: -1.5em;
+              .value {
+                font-size: 0.75em
+              }
+            }
+            .templeValue::after {
+              content: "";
+              position: absolute;
+              width: 4px;
+              height: 4px;
+              background: white;
+              bottom: -1px;
+              left: 40%;
+            }
+          }
+        }
+        .filterLines {
+          display: flex;
+          flex-wrap: wrap;
+          margin-left: 1em;
+          .filterLine {
+            display: flex;
+            align-items: center;
+            width: 50%;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            label {
+              margin-left: 0.5em;
+            }
+          }
+        }
+        .submit {
+          width: 85%;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          margin-top: 1em;
+          .submitButton, .resetFilters {
+            border-radius: 8px;
+            font-size: 1.3em;
+            color: #d7d50e;
+            box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+            background-color: black;
+            cursor: pointer;
+            border: 2px solid #ec8c42;
+            width: 6em;
+            &:hover {
+              background-color: #322f3e;
+            }
+          }
+          .resetFilters {
+            color: #e81327;
+          }
+        }
+      }
+    }
+    .guild:hover {
+      background-color: #bd996f;
+    }
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .equipment .filters .filter .filtersList .filtersForm {
+    left: -30%;
+  }
+  .equipment {
+    .armor,
+    .belt,
+    .boots,
+    .cape,
+    .otherProperties,
+    .gloves,
+    .helmet,
+    .neck,
+    .pants,
+    .ring1,
+    .ring2,
+    .shield,
+    .special,
+    .weapon {
+      button {
+        user-select: none;
+      }
+    }
+    .guild {
+      user-select: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .equipment .filters .filter .filtersList .filtersForm {
+    left: -30%;
+  }
+  .equipment .middle .guild .filtersForm .templeLevel .templeRange input {
+    width: 6.3em;
+  }
+  .equipment .middle .guild .filtersForm {
+    left: -80%;
+  }
+  .equipment {
+    max-width: 81vw;
+    .armor,
+    .belt,
+    .boots,
+    .cape,
+    .otherProperties,
+    .gloves,
+    .helmet,
+    .neck,
+    .pants,
+    .ring1,
+    .ring2,
+    .shield,
+    .special,
+    .weapon {
+      width: 20vw;
+      height: 20vw;
+      background-size: contain;
+      .itemsList:not(.addItemForm) {
+        margin: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: fixed;
+        width: 100vw;
+        min-width: 0;
+        max-width: 100vw;
+        .addItemForm {
+          top: -8em;
+          .closeList {
+            right: -0.5em;
+          }
+        }
+        .itemOnList {
+          width: 4em;
+          height: 4em;
+        }
+        .closeList {
+          right: 3em;
+        }
+      }
+      .equippableItems,
+      .unequippableItems {
+        width: 80%;
+      }
+      .itemTooltip {
+        right: auto;
+        left: -40%;
+        bottom: 100%;
+        font-size: 0.9em;
+        line-height: 1.4em;
+        padding: 3px;
+        max-width: 12em;
+        user-select: none;
+        p {
+          margin-top: 0.3em;
+          margin-bottom: 0.3em;
+        }
+      }
+      .unequipButton,
+      .enhanceButton,
+      .addPsychoLvlButton,
+      .substractPsychoLvlButton {
+        width: 3em;
+        height: 3em;
+      }
+      .enhanceForm {
+        margin: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: fixed;
+        width: 100vw;
+        min-width: 0;
+        max-width: 100vw;
+        .closeList {
+          right: 3em;
+        }
+      }
+      .empty {
+        height: 10vh;
+        width: 10vw;
+      }
+    }
+    .middle {
+      .damage,
+      .empty {
+        width: 10vw;
+        height: 10vw;
+      }
+    }
+    .inSlot {
+      background-size: auto;
+    }
+    .special {
+      .itemsList {
+        font-size: 0.75em;
+      }
+    }
+  }
+}
